@@ -33,6 +33,9 @@
           <li class="nav-item">
             <a class="nav-link" href="show.php">Daftar Pengaju</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cek-blacklist.php">Cek Daftar Hitam</a>
+          </li>
         </ul>
       </div>
     </nav>

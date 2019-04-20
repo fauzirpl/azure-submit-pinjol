@@ -127,41 +127,24 @@
 
     <main role="main" class="container">
       <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow">
-        <img class="mr-3" src="http://pngimg.com/uploads/bitcoin/bitcoin_PNG47.png" alt="" width="48" height="48">
+      <img class="mr-3" src="https://image.flaticon.com/icons/svg/1632/1632692.svg" alt="" width="48" height="48">
         <div class="lh-100">
-          <h6 class="mb-0 text-white lh-100">Daftar Pengaju Pinjaman Online</h6>
-          <small>Last Update : <?php echo date("l j F Y h:i:s A") ?></small>
+          <h6 class="mb-0 text-white lh-100">Cek Apakah Anda Termasuk ke Daftar Hitam</h6>
+          <small>Data Terupdate : <?php echo date("l j F Y h:i:s A") ?></small>
         </div>
       </div>
 
       <div class="my-3 p-3 bg-white rounded box-shadow">
-        <h6 class="border-bottom border-gray pb-2 mb-0">Dalam Proses Verifikasi</h6>
-        <?php
-        include "koneksi.php";
-        setlocale(LC_MONETARY, 'id_ID');
-        try {
-            $stmt = $conn->prepare("SELECT nik, nama, pinjaman, email FROM tbl_pinjaman");
-            $stmt->execute();
-
-            // set the resulting array to associative
-            $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-            foreach($stmt->fetchAll() as $data) { ?>
-                <div class="media text-muted pt-3">
-                    <img src="https://image.flaticon.com/icons/png/128/149/149452.png" alt="" class="mr-2 rounded" height="36" width="36">
-                    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                        <strong class="d-block"><?php echo $data['nama'] ?></strong>
-                        Total Pinjaman : Rp. <?php echo number_format($data['pinjaman'], 2); ?>
-                    </p>
-                </div>
-        <?php    
-            }
-        }
-        catch(PDOException $e) {
-            echo "Error: " . $e->getMessage();
-        }
-        $conn = null;
-        ?>
+        <h6 class="border-bottom border-gray pb-2 mb-0">Unggah Foto Anda disini</h6>
+        <form action="phpQS.php" method="post" enctype="multipart/form-data">
+            <div class="form-group mt-2">
+              <input type="file" class="form-control-file" name="photo" placeholder="JPEG, JPG, PNG" aria-describedby="fileHelpId">
+              <small id="fileHelpId" class="form-text text-muted">Ukuran Max : 2MB</small>
+            </div>
+            <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+        </form>
       </div>
+      
     </main>
 
   </body>
